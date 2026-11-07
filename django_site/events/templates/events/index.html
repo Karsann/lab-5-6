@@ -1,0 +1,9 @@
+{% extends "events/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Вітаємо на платформі подій (Django)!</h1>
+    <p>Організатор: <strong>{{ organizer|upper }}</strong></p>
+    <p>Загальна кількість доступних заходів: <strong>{{ events_count }}</strong></p>
+{% endblock %}

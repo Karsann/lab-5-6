@@ -1,0 +1,19 @@
+{% extends "events/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Список найближчих подій</h1>
+
+    {% if events %}
+        {% for item in events %}
+            <div class="card">
+                <h3>{{ item.name|truncatewords:2 }}</h3>
+                <p>Ціна: {{ item.price }} грн</p>
+                <p>Статус: {% if item.active %}Реєстрація відкрита{% else %}Завершено{% endif %}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Подій наразі немає.</p>
+    {% endif %}
+{% endblock %}

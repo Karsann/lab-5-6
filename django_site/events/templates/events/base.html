@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Django Події{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        nav { background: #2c3e50; padding: 10px; border-radius: 4px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        footer { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; color: #777; }
+        .card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .flash-success { background: #d4edda; color: #155724; padding: 10px; margin-top: 10px; border-radius: 4px; border: 1px solid #c3e6cb; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 320px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .errorlist { color: #dc3545; font-size: 13px; list-style: none; padding-left: 0; margin-top: 4px; }
+        .btn-submit { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 15px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">Головна</a>
+        <a href="{% url 'events_list' %}">Всі події</a>
+        <a href="{% url 'register' %}">Реєстрація</a>
+    </nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="flash-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Каталог подій (Django). Усі права захищено.</p>
+    </footer>
+</body>
+</html>

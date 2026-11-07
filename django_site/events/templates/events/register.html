@@ -1,0 +1,29 @@
+{% extends "events/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>Реєстрація на подію (Django Form)</h1>
+
+    <form method="POST" action="{% url 'register' %}" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div>
+            <button type="submit" class="btn-submit">Зареєструватися</button>
+        </div>
+    </form>
+{% endblock %}
