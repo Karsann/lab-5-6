@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Події{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        nav { background: #34495e; padding: 10px; border-radius: 4px; }
+        nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        footer { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; color: #777; }
+        .card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Головна</a>
+        <a href="{{ url_for('events_list') }}">Всі події</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Каталог подій. Усі права захищено.</p>
+    </footer>
+</body>
+</html>
